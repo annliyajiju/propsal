@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proposal</title>
+  <style>
+    body {
+      background-color: pink;
+      color: red;
+      font-family: Arial, sans-serif;
+    }
+    #yesBtn {
+      width: 100px;
+      height: 50px;
+      background-color: green;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    #noBtn {
+      width: 100px;
+      height: 50px;
+      background-color: green;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .button {
+      display: flex;
+      gap: 20px;
+    }
+    .bigger {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="mainContainer">
+    <h1>Will You Marry Me? 💍</h1>
+    <div class="button">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    let clickCount = 0;
+
+    noBtn.onclick = function () {
+      clickCount++;
+      const newSize = 10 + clickCount * 30;
+      yesBtn.style.width = newSize + "px";
+      yesBtn.style.height = 50 + clickCount * 10 + "px";
+      yesBtn.classList.add("bigger");
+
+      if (clickCount > 2 && clickCount < 5) {
+        noBtn.innerText = "please accept";
+      }
+      if (clickCount > 5) {
+        noBtn.style.display = "none";
+        yesBtn.style.position = "fixed";
+        yesBtn.style.width = "100vw";
+        yesBtn.style.height = "100vh";
+        yesBtn.style.top = "0";
+        yesBtn.style.left = "0";
+        yesBtn.style.zIndex = 1000;
+        yesBtn.innerText = "Yes pleaseeeeeeee";
+      }
+    };
+
+    yesBtn.onclick = function () {
+      document.body.innerHTML = `
+        <div style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;">
+          <h1 style="color:crimson; font-size: 2em;">
+            ❤ I Love You ❤ <br><br>
+            I Know You will Accept My Proposal 💖 <br><br>
+            I Will Love You Till the End of My Life 
+          </h1>
+        </div>`;
+    };
+  </script>
+</body>
+</html>
